@@ -173,8 +173,12 @@ onDocumentClick(event: MouseEvent) {
     this.menuOpen = false;
   }
 
-  if (!target.closest('.submenu') && !target.closest('.services-trigger')) {
+  if (!target.closest('.submenu') && !target.closest('.desktop-services-item')) {
     this.servicesDropdownOpen = false;
+  }
+
+  if (!target.closest('.mobile-submenu') && !target.closest('.mobile-services-item')) {
+    this.mobileServicesOpen = false;
   }
 }
 goTo(event: Event, route: string) {
