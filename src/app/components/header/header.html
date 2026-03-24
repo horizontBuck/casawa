@@ -41,16 +41,15 @@
                                     <ul>
                                         <li>
                                             <!-- <a href="javascript:void(0)" (click)="navigate('/home')">                                            </a> -->
-                                            <a routerLink="/home" href="/home">Home</a>
+                                            <a href="/home" (click)="goTo($event, '/home')">Home</a>
                                             <!-- Home -->
                                         </li>
 
                                         <li>
-  <a href="" (click)="goTo($event, '/about')">About</a>
+                                            <a href="/about" (click)="goTo($event, '/about')">About</a>
                                         </li>
                                         <li>
-                                            <a  (click)="toggleServicesDropdown($event)"
-                                                [class.active]="servicesDropdownOpen">
+                                            <a href="javascript:void(0)">
                                                 Services
                                                 <i class="fas fa-angle-down"></i>
                                             </a>
@@ -68,11 +67,7 @@
                                                     </div>
                                                 </li>
                                                 <li *ngFor="let service of services; let i = index">
-                                                    <!--  <a href="javascript:void(0)" (click)="navigateToService(service.id)">
-                                                        {{ service.name }}
-                                                    </a> -->
-                                                    <a [routerLink]="['/servicesDetail']"
-                                                        [queryParams]="{ id: service.id }">
+                                                    <a [attr.href]="'/servicesDetail?id=' + service.id">
                                                         {{ service.name }}
                                                     </a>
                                                 </li>
@@ -80,14 +75,14 @@
                                             </ul>
                                         </li>
                                         <li>
-                                            <a routerLink="/gallery" href="/gallery">Portfolio</a>
+                                            <a href="/gallery" (click)="goTo($event, '/gallery')">Portfolio</a>
 
                                         </li>
                                         <li>
-                                            <a routerLink="/faqs" href="/faqs">FAQs</a>
+                                            <a href="/faqs" (click)="goTo($event, '/faqs')">FAQs</a>
                                         </li>
                                         <li>
-                                            <a routerLink="/contact" href="/contact">Contact</a>
+                                            <a href="/contact" (click)="goTo($event, '/contact')">Contact</a>
                                         </li>
 
 
