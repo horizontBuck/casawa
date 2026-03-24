@@ -21,7 +21,8 @@ export class Header implements OnInit {
   loginPassword: string = '';
   loginError: string = '';
   servicesLoading: boolean = false;
-
+mobileMenuOpen = false;
+mobileServicesOpen = false;
   constructor(
     public router: Router,
     private servicesService: ServicesService,
@@ -31,7 +32,29 @@ export class Header implements OnInit {
   ngOnInit() {
     this.loadServices();
   }
+toggleMobileMenu() {
+  this.mobileMenuOpen = !this.mobileMenuOpen;
+}
 
+goToMobile(route: string) {
+  this.mobileMenuOpen = false;
+  this.mobileServicesOpen = false;
+
+  this.router.navigateByUrl(route).then(() => {
+    setTimeout(() => window.scrollTo(0, 0), 50);
+  });
+}
+
+goToMobileService(serviceId: string) {
+  this.mobileMenuOpen = false;
+  this.mobileServicesOpen = false;
+
+  this.router.navigate(['/servicesDetail'], {
+    queryParams: { id: serviceId }
+  }).then(() => {
+    setTimeout(() => window.scrollTo(0, 0), 50);
+  });
+}
   async loadServices(retryCount = 0) {
     try {
       this.servicesLoading = true;

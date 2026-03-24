@@ -41,48 +41,42 @@
                                     <ul>
                                         <li>
                                             <!-- <a href="javascript:void(0)" (click)="navigate('/home')">                                            </a> -->
-                                            <a href="/home" (click)="goTo($event, '/home')">Home</a>
+                                            <a href="" (click)="goTo($event, '/home')">Home</a>
                                             <!-- Home -->
                                         </li>
 
                                         <li>
-                                            <a href="/about" (click)="goTo($event, '/about')">About</a>
+                                            <a href="" (click)="goTo($event, '/about')">About</a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0)">
+                                            <button type="button" class="services-toggle"
+                                                (click)="mobileServicesOpen = !mobileServicesOpen">
                                                 Services
-                                                <i class="fas fa-angle-down"></i>
-                                            </a>
-                                            <ul class="submenu" [class.show]="servicesDropdownOpen">
+                                            </button>
 
-                                                <li *ngIf="servicesLoading">
-                                                    <span class="loading-text">Loading services...</span>
+                                            <ul *ngIf="mobileServicesOpen" class="mobile-submenu">
+                                                <li *ngIf="servicesLoading">Loading services...</li>
+
+                                                <li *ngIf="!servicesLoading && services.length === 0">
+                                                    No services available
                                                 </li>
-                                                <li *ngIf="!servicesLoading && services.length === 0"
-                                                    class="no-services-container">
-                                                    <div class="no-services-content">
-                                                        <span class="no-services-text">No services available</span>
-                                                        <button class="refresh-btn"
-                                                            (click)="refreshServices(); $event.stopPropagation()">Refresh</button>
-                                                    </div>
-                                                </li>
-                                                <li *ngFor="let service of services; let i = index">
-                                                    <a [attr.href]="'/servicesDetail?id=' + service.id">
+
+                                                <li *ngFor="let service of services">
+                                                    <a (click)="goToMobileService(service.id)">
                                                         {{ service.name }}
                                                     </a>
                                                 </li>
-
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="/gallery" (click)="goTo($event, '/gallery')">Portfolio</a>
+                                            <a href="" (click)="goTo($event, '/gallery')">Portfolio</a>
 
                                         </li>
                                         <li>
-                                            <a href="/faqs" (click)="goTo($event, '/faqs')">FAQs</a>
+                                            <a href="" (click)="goTo($event, '/faqs')">FAQs</a>
                                         </li>
                                         <li>
-                                            <a href="/contact" (click)="goTo($event, '/contact')">Contact</a>
+                                            <a href="" (click)="goTo($event, '/contact')">Contact</a>
                                         </li>
 
 
@@ -118,7 +112,7 @@
                             </button>
                         </a>
 
-                        <div class="header__hamburger d-xl-block my-auto">
+                        <div class="header__hamburger d-xl-block my-auto" (click)="toggleMobileMenu()">
                             <div class="sidebar__toggle">
                                 <img src="assets/img/bar.png" alt="img">
                             </div>
