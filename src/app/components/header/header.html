@@ -41,15 +41,15 @@
                                     <ul>
                                         <li>
                                             <!-- <a href="javascript:void(0)" (click)="navigate('/home')">                                            </a> -->
-                                            <a href="" (click)="goTo($event, '/home')">Home</a>
+                                            <a routerLink="/home" href="/home">Home</a>
                                             <!-- Home -->
                                         </li>
 
                                         <li>
-                                            <a href="" (click)="goTo($event, '/about')">About</a>
+  <a href="" (click)="goTo($event, '/about')">About</a>
                                         </li>
                                         <li>
-                                            <a (click)="toggleServicesDropdown($event)"
+                                            <a  (click)="toggleServicesDropdown($event)"
                                                 [class.active]="servicesDropdownOpen">
                                                 Services
                                                 <i class="fas fa-angle-down"></i>
@@ -80,14 +80,14 @@
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="" (click)="goTo($event, '/gallery')">Portfolio</a>
+                                            <a routerLink="/gallery" href="/gallery">Portfolio</a>
 
                                         </li>
                                         <li>
-                                            <a href="" (click)="goTo($event, '/faqs')">FAQs</a>
+                                            <a routerLink="/faqs" href="/faqs">FAQs</a>
                                         </li>
                                         <li>
-                                            <a href="" (click)="goTo($event, '/contact')">Contact</a>
+                                            <a routerLink="/contact" href="/contact">Contact</a>
                                         </li>
 
 
