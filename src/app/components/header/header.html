@@ -48,7 +48,7 @@
                                         <li>
                                             <a href="/about" (click)="goTo($event, '/about')">About</a>
                                         </li>
-                                         <li>
+                                        <li>
                                             <a href="javascript:void(0)" (click)="toggleServicesDropdown($event)"
                                                 [class.active]="servicesDropdownOpen">
                                                 Services
@@ -66,7 +66,7 @@
                                                     </div>
                                                 </li>
                                                 <li *ngFor="let service of services; let i = index">
-                                                    <a href="javascript:void(0)" (click)="navigateToService(service.id)">
+                                                    <a [routerLink]="['/servicesDetail']" [queryParams]="{ id: service.id }" (click)="closeServicesDropdown()">
                                                         {{ service.name }}
                                                     </a>
                                                 </li>

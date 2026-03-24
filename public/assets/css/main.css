@@ -890,8 +890,8 @@ input.main-search-input::placeholder {
   position: relative;
   list-style: none;
   display: inline-block;
-  margin-inline-end: 20px;
-  padding: 30px 0;
+  margin-inline-end: 15px;
+  padding: 25px 0;
 }
 .header-main .main-menu ul li:last-child {
   margin-inline-end: 0;
