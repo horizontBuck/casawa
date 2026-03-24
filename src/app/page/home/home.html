@@ -6,9 +6,9 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="hero-content">
-                    <h4 class="wow fadeInUp text-left" >Welcome</h4>
+                    <h4 class="wow fadeInUp text-left">Welcome</h4>
                     <h1 class="wow fadeInUp" data-wow-delay=".3s">
-                       <span style="color: #e26a2c;">CASA</span> <br> WALLPAPER
+                        <span style="color: #e26a2c;">CASA</span> <br> WALLPAPER
                     </h1>
                     <p class="wow fadeInUp" data-wow-delay=".5s">
                         Transform your space with professional wallpaper installations for both homes and businesses.
@@ -17,10 +17,10 @@
                     <div class="hero-button">
 
                         <div class="hero-actions">
-                            <a class="btn-primary" (click)="router.navigate(['/gallery'])">
+                            <button type="button" class="btn-primary" (click)="goTo($event, '/gallery')">
                                 View Works
                                 <i class="fas fa-arrow-right"></i>
-                            </a>
+                            </button>
 
                             <div class="call-cta" (click)="toggleMenu($event)">
                                 <button class="fab">
@@ -28,10 +28,10 @@
                                     <span>(919) 885-5401</span>
                                 </button>
                             </div>
-                             <div class="fab-menu" [class.show]="menuOpen">
-                                    <button (click)="sendSMS()">Send SMS</button>
-                                    <button (click)="makeCall()">Make Call</button>
-                                </div>
+                            <div class="fab-menu" [class.show]="menuOpen">
+                                <button (click)="sendSMS()">Send SMS</button>
+                                <button (click)="makeCall()">Make Call</button>
+                            </div>
                         </div>
 
                     </div>
@@ -163,22 +163,28 @@
     <div class="container">
         <div class="section-title text-center">
             <span class="wow fadeInUp">Recent Projects</span>
-            <h2 class="wow fadeInUp" data-wow-delay=".3s">Elevate Your Home's Design <br> with Interior Mastery</h2>
-                                        <a routerLink="/gallery"><span class="wow fadeInUp" data-wow-delay=".3s">View all</span></a>
+            <h2 class="wow fadeInUp" data-wow-delay=".3s">
+                Elevate Your Home's Design <br> with Interior Mastery
+            </h2>
 
+            <button type="button" class="view-all-btn" (click)="goTo($event, '/gallery')">
+              <span class="wow fadeInUp" data-wow-delay=".3s">View all <i class="fas fa-arrow-right"></i></span>
+            </button>
         </div>
     </div>
-    <div class="project-wrapper" >
-        <div class="swiper project-slider" >
+    <div class="project-wrapper">
+        <div class="swiper project-slider">
             <div class="swiper-wrapper">
                 <div class="swiper-slide" *ngFor="let portfolio of filteredPortfolios">
                     <div class="project-carousel-items">
                         <div class="project-image">
-                            <img [src]="getImageUrl(portfolio)" alt="{{ portfolio.name }}" (click)="viewImage(portfolio)">
+                            <img [src]="getImageUrl(portfolio)" alt="{{ portfolio.name }}"
+                                (click)="viewImage(portfolio)">
                             <div class="portfolio-content">
                                 <span>{{ portfolio.name }}</span>
                                 <h3>
-                                    <span class="tag-badge" [ngClass]="portfolio.tag === 'residencial' ? 'residential-tag' : 'commercial-tag'">
+                                    <span class="tag-badge"
+                                        [ngClass]="portfolio.tag === 'residencial' ? 'residential-tag' : 'commercial-tag'">
                                         {{ portfolio.tag }}
                                     </span>
                                 </h3>
@@ -189,7 +195,9 @@
             </div>
             <div class="swiper-dot">
                 <div class="dot"></div>
-                            <a routerLink="/gallery"><span class="wow fadeInUp" data-wow-delay=".3s">View all</span></a>
+                <!-- <button type="button" class="view-all-btn" (click)="goTo($event, '/gallery')">
+                    View all
+                </button> -->
 
             </div>
         </div>
@@ -628,7 +636,7 @@
                             </h2>
                         </div>
                         <div class="row g-4">
-                            
+
                             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".5s">
                                 <div class="service-items">
                                     <div class="icon">
@@ -636,7 +644,8 @@
                                     </div>
                                     <div class="content">
                                         <h3>
-                                            <a href="https://wa.me/19198855401?text=Hi,%20I%20am%20interested%20in%20Wallpaper%20installation%20or%20repair%20service" target="_blank">Wallpaper installation or
+                                            <a href="https://wa.me/19198855401?text=Hi,%20I%20am%20interested%20in%20Wallpaper%20installation%20or%20repair%20service"
+                                                target="_blank">Wallpaper installation or
                                                 repair</a>
                                         </h3>
                                         <p>
@@ -644,7 +653,8 @@
                                             service. Perfect finish, we take care of every detail to make your vision a
                                             reality
                                         </p>
-                                        <a href="https://wa.me/19198855401?text=Hi,%20I%20am%20interested%20in%20Wallpaper%20installation%20or%20repair%20service" target="_blank" class="link-btn">
+                                        <a href="https://wa.me/19198855401?text=Hi,%20I%20am%20interested%20in%20Wallpaper%20installation%20or%20repair%20service"
+                                            target="_blank" class="link-btn">
                                             Check It Out <i class="fas fa-long-arrow-right"></i>
                                         </a>
                                     </div>
@@ -657,7 +667,8 @@
                                     </div>
                                     <div class="content">
                                         <h3>
-                                            <a href="https://wa.me/19198855401?text=Hi,%20I%20am%20interested%20in%20Wallpaper%20removal%20service" target="_blank">Wallpaper removal</a>
+                                            <a href="https://wa.me/19198855401?text=Hi,%20I%20am%20interested%20in%20Wallpaper%20removal%20service"
+                                                target="_blank">Wallpaper removal</a>
                                         </h3>
                                         <p>
                                             Transform your space with our efficient and meticulous wallpaper removal
@@ -665,7 +676,8 @@
                                             carefully strip away old wallpaper without causing any damage to your walls.
 
                                         </p>
-                                        <a href="https://wa.me/19198855401?text=Hi,%20I%20am%20interested%20in%20Wallpaper%20removal%20service" target="_blank" class="link-btn">
+                                        <a href="https://wa.me/19198855401?text=Hi,%20I%20am%20interested%20in%20Wallpaper%20removal%20service"
+                                            target="_blank" class="link-btn">
                                             Uncover Details <i class="fas fa-long-arrow-right"></i>
                                         </a>
                                     </div>
@@ -678,14 +690,16 @@
                                     </div>
                                     <div class="content">
                                         <h3>
-                                            <a href="https://wa.me/19198855401?text=Hi,%20I%20am%20interested%20in%20Interior%20Painting%20service" target="_blank">Interior Painting </a>
+                                            <a href="https://wa.me/19198855401?text=Hi,%20I%20am%20interested%20in%20Interior%20Painting%20service"
+                                                target="_blank">Interior Painting </a>
                                         </h3>
                                         <p>
                                             Transform the look of your home. Whether you want to revitalize a single
                                             room or completely renovate your entire home, our team provides results that
                                             impeccably reflect your style and vision.
                                         </p>
-                                        <a href="https://wa.me/19198855401?text=Hi,%20I%20am%20interested%20in%20Interior%20Painting%20service" target="_blank" class="link-btn">
+                                        <a href="https://wa.me/19198855401?text=Hi,%20I%20am%20interested%20in%20Interior%20Painting%20service"
+                                            target="_blank" class="link-btn">
                                             See details <i class="fas fa-long-arrow-right"></i>
                                         </a>
                                     </div>

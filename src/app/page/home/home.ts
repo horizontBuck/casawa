@@ -74,10 +74,31 @@ form = {
     window.addEventListener('scroll', () => {
       console.log(window.scrollY);
     });
-    this.initScripts();
-    
+   this.projectSwiper = new Swiper('.project-slider', {
+  loop: true,
+  autoplay: { delay: 5000 },
+  slidesPerView: 3,
+  spaceBetween: 30,
+  preventClicks: false,
+  preventClicksPropagation: false,
+  breakpoints: {
+    0: { slidesPerView: 1 },
+    768: { slidesPerView: 2 },
+    1200: { slidesPerView: 3 }
   }
+});
+  }
+goTo(event: Event, route: string) {
+  event.preventDefault();
+  event.stopPropagation();
 
+  this.router.navigateByUrl(route).then((ok) => {
+    console.log('navigate ->', route, ok);
+    if (ok) {
+      setTimeout(() => window.scrollTo(0, 0), 50);
+    }
+  });
+}
   get f(): { [key: string]: AbstractControl } {
     return this.ngFormRequest.controls;
   }

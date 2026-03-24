@@ -128,7 +128,7 @@ export class Header implements OnInit {
     window.open(`tel:${this.phoneNumber}`, '_self');
   }
 
-  @HostListener('document:click', ['$event'])
+ /*  @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
     if (this.menuOpen) {
       this.menuOpen = false;
@@ -137,6 +137,38 @@ export class Header implements OnInit {
       this.servicesDropdownOpen = false;
     }
     // Note: Login modal handles its own outside clicks
+  } */
+@HostListener('document:click', ['$event'])
+onDocumentClick(event: MouseEvent) {
+  const target = event.target as HTMLElement;
+
+  if (!target.closest('.search-trigger')) {
+    this.menuOpen = false;
   }
 
+  if (!target.closest('.submenu') && !target.closest('.services-trigger')) {
+    this.servicesDropdownOpen = false;
+  }
+}
+goTo(event: Event, route: string) {
+  event.preventDefault();
+  event.stopPropagation();
+
+  this.menuOpen = false;
+  this.servicesDropdownOpen = false;
+
+  if (this.router.url === route) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
+  }
+
+  this.router.navigateByUrl(route).then((ok) => {
+    console.log('navigateByUrl ->', route, ok);
+    if (ok) {
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+      }, 50);
+    }
+  });
+}
 }
