@@ -48,21 +48,58 @@
                                         <li>
                                             <a href="" (click)="goTo($event, '/about')">About</a>
                                         </li>
-                                        <li>
-                                            <button type="button" class="services-toggle"
-                                                (click)="mobileServicesOpen = !mobileServicesOpen">
+                                         <!-- DESKTOP -->
+                                         
+                                        <li class="desktop-services-item">
+                                            <a href="javascript:void(0)">
                                                 Services
-                                            </button>
-
-                                            <ul *ngIf="mobileServicesOpen" class="mobile-submenu">
-                                                <li *ngIf="servicesLoading">Loading services...</li>
-
-                                                <li *ngIf="!servicesLoading && services.length === 0">
-                                                    No services available
+                                                <i class="fas fa-angle-down"></i>
+                                            </a>
+                                            <ul class="submenu">
+                                                <li *ngIf="servicesLoading">
+                                                    <span class="loading-text">Loading services...</span>
                                                 </li>
-
+                                                <li *ngIf="!servicesLoading && services.length === 0"
+                                                    class="no-services-container">
+                                                    <div class="no-services-content">
+                                                        <span class="no-services-text">No services available</span>
+                                                        <button class="refresh-btn"
+                                                            (click)="refreshServices(); $event.stopPropagation()">
+                                                            Refresh
+                                                        </button>
+                                                    </div>
+                                                </li>
                                                 <li *ngFor="let service of services">
-                                                    <a (click)="goToMobileService(service.id)">
+                                                    <a [attr.href]="'/servicesDetail?id=' + service.id">
+                                                        {{ service.name }}
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                        <!-- MOBILE -->
+                                        <li class="mobile-services-item">
+                                            <a href="javascript:void(0)" (click)="toggleMobileServices($event)">
+                                                Services
+                                                <i class="fas"
+                                                    [ngClass]="mobileServicesOpen ? 'fa-times' : 'fa-angle-down'"></i>
+                                            </a>
+                                            <ul class="mobile-submenu" *ngIf="mobileServicesOpen">
+                                                <li *ngIf="servicesLoading">
+                                                    <span class="loading-text">Loading services...</span>
+                                                </li>
+                                                <li *ngIf="!servicesLoading && services.length === 0"
+                                                    class="no-services-container">
+                                                    <div class="no-services-content">
+                                                        <span class="no-services-text">No services available</span>
+                                                        <button class="refresh-btn"
+                                                            (click)="refreshServices(); $event.stopPropagation()">
+                                                            Refresh
+                                                        </button>
+                                                    </div>
+                                                </li>
+                                                <li *ngFor="let service of services">
+                                                    <a [attr.href]="'/servicesDetail?id=' + service.id">
                                                         {{ service.name }}
                                                     </a>
                                                 </li>

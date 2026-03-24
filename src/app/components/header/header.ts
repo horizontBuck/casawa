@@ -35,7 +35,11 @@ mobileServicesOpen = false;
 toggleMobileMenu() {
   this.mobileMenuOpen = !this.mobileMenuOpen;
 }
-
+toggleMobileServices(event: MouseEvent) {
+  event.preventDefault();
+  event.stopPropagation();
+  this.mobileServicesOpen = !this.mobileServicesOpen;
+}
 goToMobile(route: string) {
   this.mobileMenuOpen = false;
   this.mobileServicesOpen = false;
@@ -179,6 +183,7 @@ goTo(event: Event, route: string) {
 
   this.menuOpen = false;
   this.servicesDropdownOpen = false;
+  this.mobileServicesOpen = false;
 
   if (this.router.url === route) {
     window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -378,3 +378,38 @@
 .fab.admin-btn:hover {
     color: #e26a2c;
 }
+.desktop-services-item {
+  display: block;
+}
+
+.mobile-services-item {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .desktop-services-item {
+    display: none !important;
+  }
+
+  .mobile-services-item {
+    display: block !important;
+  }
+
+  .mobile-submenu {
+    padding-left: 15px;
+    margin-top: 10px;
+  }
+
+  .mobile-submenu li a {
+    display: block;
+    padding: 8px 0;
+    font-size: 16px;
+  }
+}
+.header-main .main-menu ul li:hover > .submenu,
+.header-main .main-menu ul li .submenu.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0px);
+    display: block;
+}
