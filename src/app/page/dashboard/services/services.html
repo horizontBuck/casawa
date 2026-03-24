@@ -1,0 +1,160 @@
+<section class="contact-section-4 fix section-padding pt-80">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-4">
+                    <h1 class="display-4 fw-bold text-dark">Services</h1>
+                    <button *ngIf="!showForm" (click)="toggleForm()" class="btn btn-lg mt-3" style="background-color: #da743f;">
+                        <i class="fas fa-plus me-2"></i>Add Service
+                    </button>
+                </div>
+
+                <!-- Form Section -->
+                <div *ngIf="showForm" class="mb-5">
+                    <div class="card shadow-lg">
+                        <div class="card-header text-white" style="background: #da743f;">
+                            <h4 class="mb-0">{{ isEditing ? 'Edit Service' : 'Upload Service' }}</h4>
+                        </div>
+                        <div class="card-body">
+                            <form (ngSubmit)="uploadService(servicesForm)" #servicesForm="ngForm" class="contact-form-items">
+                                <div class="row g-4">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label for="files" class="form-label fw-bold">Select Images {{ isEditing ? '(Optional - Add new images to existing ones)' : '' }}</label>
+                                            <input type="file" name="files" id="files" multiple accept="image/*"
+                                                (change)="onFileChange($event)" class="form-control">
+                                            <small *ngIf="isEditing" class="text-muted">Leave empty to keep existing images, or add new ones to append to the current service. Click on existing images to mark/unmark them for deletion.</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="name" class="form-label fw-bold text-dark">Service Name</label>
+                                            <input type="text" name="name" id="name" [(ngModel)]="formData.name" placeholder="Enter service name" required class="form-control" style="color: #000;">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="form-group">
+                                            <label for="description" class="form-label fw-bold text-dark">Description</label>
+                                            <textarea name="description" id="description" [(ngModel)]="formData.description" placeholder="Enter description" required class="form-control" style="color: #000;" rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                     <div class="col-lg-12" *ngIf="isEditing">
+                                        <div class="form-group">
+                                            <label class="form-label fw-bold text-dark">Lidescription Items</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text" [(ngModel)]="newLidescriptionItem" placeholder="Add lidescription item" class="form-control" style="color: #000;" [ngModelOptions]="{standalone: true}">
+                                                <button type="button" (click)="addLidescriptionItem()" class="btn btn-outline-primary">Add Item</button>
+                                            </div>
+                                            <ul class="list-group" *ngIf="lidescription.length > 0">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of lidescription; let i = index">
+                                                    {{ item }}
+                                                    <button type="button" (click)="removeLidescriptionItem(i)" class="btn btn-danger btn-sm">&times;</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12" *ngIf="isEditing">
+                                        <div class="form-group">
+                                            <label for="preitems" class="form-label fw-bold text-dark">Pre items</label>
+                                            <textarea name="preitems" id="preitems" [(ngModel)]="formData.preitems" placeholder="Enter preitems" required class="form-control" style="color: #000;" rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label class="form-label fw-bold text-dark">Service Items</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text" [(ngModel)]="newItem" placeholder="Add item" class="form-control" style="color: #000;" [ngModelOptions]="{standalone: true}">
+                                                <button type="button" (click)="addItem()" class="btn btn-outline-primary">Add Item</button>
+                                            </div>
+                                            <ul class="list-group" *ngIf="items.length > 0">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of items; let i = index">
+                                                    {{ item }}
+                                                    <button type="button" (click)="removeItem(i)" class="btn btn-danger btn-sm">&times;</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12" *ngIf="previews.length > 0">
+                                        <h5 class="fw-bold">{{ isEditing ? 'Current Images' : 'Preview' }}</h5>
+                                        <div class="row g-3">
+                                            <div *ngFor="let preview of previews; let i = index" class="col-md-3 col-sm-6">
+                                                <div class="position-relative">
+                                                    <img *ngIf="selectedFiles[i] && (selectedFiles[i].type.startsWith('image/') || selectedFiles[i].type === 'existing/image')"
+                                                        [src]="preview" alt="Preview" class="img-fluid rounded shadow-sm" style="width: 100%; height: 150px; object-fit: cover;">
+                                                    <span *ngIf="isEditing && selectedFiles[i]?.type === 'existing/image'"
+                                                        class="badge position-absolute"
+                                                        [class.bg-success]="selectedFiles[i] && !imagesToDelete.includes(selectedFiles[i].name.replace('existing_', ''))"
+                                                        [class.bg-danger]="selectedFiles[i] && imagesToDelete.includes(selectedFiles[i].name.replace('existing_', ''))"
+                                                        style="top: 5px; left: 5px; font-size: 10px;">
+                                                        {{ (selectedFiles[i] && imagesToDelete.includes(selectedFiles[i].name.replace('existing_', ''))) ? 'To Delete' : 'Existing' }}
+                                                    </span>
+                                                    <button type="button" (click)="removeFile(i)"
+                                                            class="btn position-absolute"
+                                                            [class.btn-danger]="selectedFiles[i]?.type !== 'existing/image'"
+                                                            [class.btn-warning]="selectedFiles[i]?.type === 'existing/image' && selectedFiles[i] && imagesToDelete.includes(selectedFiles[i].name.replace('existing_', ''))"
+                                                            [class.btn-secondary]="selectedFiles[i]?.type === 'existing/image' && selectedFiles[i] && !imagesToDelete.includes(selectedFiles[i].name.replace('existing_', ''))"
+                                                            style="top: 5px; right: 5px; font-size: 12px; padding: 2px 6px;"
+                                                            [title]="selectedFiles[i]?.type === 'existing/image' ? (selectedFiles[i] && imagesToDelete.includes(selectedFiles[i].name.replace('existing_', '')) ? 'Click to unmark for deletion' : 'Click to mark for deletion') : 'Eliminar'">
+                                                        <i class="fas"
+                                                           [class.fa-times]="selectedFiles[i]?.type !== 'existing/image'"
+                                                           [class.fa-check]="selectedFiles[i]?.type === 'existing/image' && selectedFiles[i] && imagesToDelete.includes(selectedFiles[i].name.replace('existing_', ''))"
+                                                           [class.fa-trash]="selectedFiles[i]?.type === 'existing/image' && selectedFiles[i] && !imagesToDelete.includes(selectedFiles[i].name.replace('existing_', ''))"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 text-center">
+                                        <button type="submit" class="btn btn-success btn-lg" [disabled]="loading || (!isEditing && selectedFiles.length === 0)">
+                                            <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                            {{ loading ? 'Uploading...' : (isEditing ? 'Update Service' : 'Upload Service') }}
+                                            <i class="fas fa-upload ms-2"></i>
+                                        </button>
+                                        <button type="button" (click)="isEditing ? cancelEdit() : toggleForm()" class="btn btn-secondary btn-lg ms-3">Cancel</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services List -->
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <h3 class="text-center mb-4">Existing Services</h3>
+                        <div class="row g-4" *ngIf="services.length > 0; else noServices">
+                            <div class="col-md-4" *ngFor="let service of services">
+                                <div class="card h-100 shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ service.name }}</h5>
+                                        <p class="card-text">{{ service.description }}</p>
+                                        <h6>Items:</h6>
+                                        <ul class="list-unstyled">
+                                            <li *ngFor="let item of service.items">{{ item }}</li>
+                                        </ul>
+                                        <div *ngIf="service.images && service.images.length > 0">
+                                            <img [src]="authService.fileUrl(service, service.images[0])" alt="Service Image" class="img-fluid rounded mt-2" style="max-height: 150px;">
+                                        </div>
+                                        <div class="mt-3">
+                                            <button type="button" (click)="editService(service)" class="btn btn-primary btn-sm me-2">
+                                                <i class="fas fa-edit"></i> Editar
+                                            </button>
+                                            <button type="button" (click)="deleteService(service)" class="btn btn-danger btn-sm">
+                                                <i class="fas fa-trash"></i> Eliminar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <ng-template #noServices>
+                            <p class="text-center text-muted">No services added yet.</p>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

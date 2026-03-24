@@ -1,0 +1,104 @@
+
+<app-header></app-header>
+
+<router-outlet></router-outlet>
+
+<app-footer></app-footer>
+
+ <div class="scroll-up">
+    <svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+    </svg>
+  </div>
+  <button class="calculator-floating-btn"
+        (click)="openCalculator()">
+    <i class="fas fa-calculator"></i>
+  </button>
+  <app-calculator #calculator></app-calculator>
+
+<div class="floating-button">
+    <button class="fab" (click)="toggleMenu()">
+      <i class="fa fa-phone"></i>
+    </button>
+  
+    <!-- Menú desplegable -->
+    <div class="fab-menu" [class.show]="menuOpen">
+      <button (click)="sendSMS()">Send SMS</button>
+      <button (click)="makeCall()">Make Call</button>
+      <button (click)="sendEmail()">Send Email</button>
+    </div>
+  </div>
+  
+  
+  
+  <!-- Offcanvas Area Start -->
+  <div class="fix-area">
+    <div class="offcanvas__info">
+        <div class="offcanvas__wrapper">
+            <div class="offcanvas__content">
+                <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                    <div class="offcanvas__logo">
+                        <a (click)="router.navigate(['/home'])">
+                            <img src="assets/img/logo/header-logo.png" alt="logo-img">
+                        </a>
+                    </div>
+                    <div class="offcanvas__close">
+                        <button>
+                        <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+  
+                <div class="mobile-menu fix mb-3"></div>
+                <div class="offcanvas__contact">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li class="d-flex align-items-center">
+                            <div class="offcanvas__contact-icon">
+                                <i class="fal fa-map-marker-alt"></i>
+                            </div>
+                            <div class="offcanvas__contact-text">
+                                <a target="_blank" href="https://maps.app.goo.gl/b7SyxkALCfMvbdDTA">Garner, North Carolina (NC)</a>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <div class="offcanvas__contact-icon mr-15">
+                                <i class="fal fa-envelope"></i>
+                            </div>
+                            <div class="offcanvas__contact-text">
+                                <a href="mailto:admin&#64;casainstall.com"><span class="">admin&#64;casainstall.com</span></a>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <div class="offcanvas__contact-icon mr-15">
+                                <i class="fal fa-clock"></i>
+                            </div>
+                            <div class="offcanvas__contact-text">
+                                <a target="_blank">Mod-Sat, 08:00 -17:00</a>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <div class="offcanvas__contact-icon mr-15">
+                                <i class="far fa-phone"></i>
+                            </div>
+                            <div class="offcanvas__contact-text">
+                                <a href="tel:9198855401">9198855401</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="header-button mt-4">
+                        <a (click)="router.navigate(['/contact'])" class="theme-btn text-center">
+                            Contact Us
+                        </a>
+                    </div>
+                    <div class="social-icon d-flex align-items-center">
+                        <a href="https://web.facebook.com/casaimproveme?_rdc=1&_rdr" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/casaimproveme/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="offcanvas__overlay"></div>

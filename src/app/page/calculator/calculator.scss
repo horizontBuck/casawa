@@ -1,0 +1,108 @@
+:host {
+  display: block;
+  position: relative;
+}
+
+// Make sure the modal is above all other content
+::ng-deep .modal {
+  z-index: 9999 !important;
+  
+  .modal-dialog {
+    z-index: 10000 !important;
+  }
+}
+
+// Make sure the backdrop covers everything
+::ng-deep .modal-backdrop {
+  z-index: 9998 !important;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.calculator-modal {
+  background: #fff;
+  color: #000;
+  border-radius: 12px;
+  
+  .modal-content {
+    border: none;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.wall-box {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  
+  .btn-outline-light {
+    color: #333;
+    border-color: #da743f;
+    background-color: white;
+    
+    &:hover {
+      background-color: #da743f;
+      color: white;
+    }
+    
+    i.fas, span {
+      color: #333;
+    }
+    
+    &:hover i.fas,
+    &:hover span {
+      color: white;
+    }
+    
+    i.fas {
+      margin-right: 5px;
+    }
+  }
+}
+
+// WhatsApp button styles
+.whatsapp-btn {
+  background-color: #25D366 !important;
+  color: white !important;
+  border: none !important;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px !important;
+  border-radius: 4px !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: #128C7E !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  i {
+    font-size: 1.2em;
+    margin-right: 8px;
+  }
+}
+
+// Ensure buttons have consistent spacing
+.gap-3 {
+  gap: 1rem;
+}
+
+.result-box {
+  background: #da743f;
+  padding: 20px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.form-control {
+  background: #fff;
+  color: #000;
+  border: 1px solid #333;
+}
+
+.form-control:focus {
+  border-color: #da743f;
+  box-shadow: none;
+}

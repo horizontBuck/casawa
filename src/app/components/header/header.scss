@@ -1,0 +1,380 @@
+.header-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+.header-1.header-2 .mega-menu-wrapper .header-main .main-menu ul li a {
+    color: #212529;
+}
+.header-1.header-2 .mega-menu-wrapper .header-right .icon-items .content p {
+    color: #000;
+    margin-bottom: 5px;
+}
+.header-1.header-2 .mega-menu-wrapper .header-right .icon-items .content h4 a {
+    color: #000;
+}
+.header-1.header-2 .mega-menu-wrapper .header-right .search-icon {
+    color: #e26f32;
+    border-left: 1px solid var(--text);
+    border-right: 1px solid var(--text);
+    padding: 0 20px;
+}
+.sticky.header-2 {
+    background-color: #ffffff;
+}
+@media (max-width: 767px) {
+    .header-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 0;
+    }
+    .phone-number {
+        font-size: 0.8rem; /* Tamaño de fuente más pequeño para dispositivos móviles */
+    }
+  }
+  .search-trigger {
+    position: relative;
+    display: inline-block;
+}
+
+.fab {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5em;
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.fab i {
+    margin-right: 10px;
+}
+
+.phone-number {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.fab-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000; /* Asegúrate de que el menú se superponga sobre otros elementos */
+}
+
+.fab-menu.show {
+    display: block;
+}
+
+.fab-menu button {
+    display: block;
+    width: 100%;
+    border: none;
+    background: none;
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.fab-menu button:hover {
+    background-color: #f0f0f0;
+}
+
+// Dropdown menu styles
+.header-main .main-menu ul li .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 240px;
+    background: var(--white);
+    z-index: 99999;
+    visibility: hidden;
+    opacity: 0;
+    transform-origin: top center;
+    color: var(--header);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    transform: translateY(10px);
+    transition: all 0.4s ease-in-out;
+    display: none;
+}
+
+.header-main .main-menu ul li:hover > .submenu,
+.header-main .main-menu ul li .submenu.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0px);
+    display: block;
+}
+
+.header-main .main-menu ul li .submenu li {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.header-main .main-menu ul li .submenu li a {
+    position: relative;
+    z-index: 11;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--header);
+    padding: 0 25px;
+    padding-bottom: 11px;
+    padding-top: 11px;
+    width: 100%;
+    border-bottom: 1px solid #eeeeee;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.header-main .main-menu ul li .submenu li:last-child a {
+    border: none;
+}
+
+.header-main .main-menu ul li .submenu li:hover a {
+    background: var(--theme);
+    color: var(--white) !important;
+}
+
+.loading-text, .no-services-text {
+    padding: 8px 25px;
+    color: #666;
+    font-style: italic;
+    cursor: default;
+}
+
+.no-services-container {
+    width: 100%;
+}
+
+.no-services-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 25px;
+    gap: 8px;
+}
+
+.refresh-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+}
+
+.refresh-btn:hover {
+    background: #0056b3;
+}
+
+// Login Modal Styles
+.login-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100000 !important;
+    backdrop-filter: blur(2px);
+}
+
+.login-modal-content {
+    background-color: white;
+    padding: 0;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.login-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.login-modal-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #6c757d;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+.login-modal-body {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.login-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 20px;
+    border-top: 1px solid #e9ecef;
+    background-color: #f8f9fa;
+    border-radius: 0 0 8px 8px;
+}
+
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+.btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    color: #666666;
+}
+
+// Contact list styles
+.contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.contact-list li i {
+    margin-right: 5px;
+    color: #e26a2c;
+}
+
+.contact-list li a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    pointer-events: auto;
+    margin-left: 5px;
+}
+
+.contact-list li a:hover {
+    color: #000;
+}
+
+.contact-list li a.link {
+    color: #000;
+}
+
+.fab.admin-btn {
+    color: #000;
+}
+
+.fab.admin-btn:hover {
+    color: #e26a2c;
+}

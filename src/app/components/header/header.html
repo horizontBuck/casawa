@@ -1,0 +1,166 @@
+<div class="header-top-section section-bg fix">
+    <div class="container">
+        <div class="header-top-wrapper">
+            <ul class="contact-list">
+                <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    Raleigh, NC
+                </li>
+            </ul>
+            <div class="top-right">
+                <ul class="contact-list">
+                    <li>
+                        <a href="mailto:admin&#64;casainstall.com" class="link">admin&#64;casainstall.com</a>
+                    </li>
+
+                </ul>
+                <div class="social-icon d-flex align-items-center">
+                    <a href="https://www.instagram.com/casaimproveme/" target="_blank"><i
+                            class="fab fa-instagram-f"></i></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<header>
+    <div id="header-sticky" class="header-1 header-2">
+        <div class="container-fluid">
+            <div class="mega-menu-wrapper">
+                <div class="header-main">
+                    <div class="header-left">
+                        <div class="logo">
+                            <a routerLink="/home" href="/home" class="header-logo-2">
+                                <img src="assets/img/logo/header-logo.png" alt="logo-img">
+                            </a>
+                        </div>
+                        <div class="mean__menu-wrapper">
+                            <div class="main-menu">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                        <li>
+                                            <!-- <a href="javascript:void(0)" (click)="navigate('/home')">                                            </a> -->
+                                            <a routerLink="/home" href="/home">Home</a>
+                                            <!-- Home -->
+                                        </li>
+
+                                        <li>
+                                            <!-- <a href="javascript:void(0)" (click)="navigate('/about')">About</a> -->
+                                            <a routerLink="/about" href="/about">About</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)" (click)="toggleServicesDropdown($event)"
+                                                [class.active]="servicesDropdownOpen">
+                                                Services
+                                                <i class="fas fa-angle-down"></i>
+                                            </a>
+                                            <ul class="submenu" [class.show]="servicesDropdownOpen">
+                                              
+                                                <li *ngIf="servicesLoading">
+                                                    <span class="loading-text">Loading services...</span>
+                                                </li>
+                                                <li *ngIf="!servicesLoading && services.length === 0" class="no-services-container">
+                                                    <div class="no-services-content">
+                                                        <span class="no-services-text">No services available</span>
+                                                        <button class="refresh-btn" (click)="refreshServices(); $event.stopPropagation()">Refresh</button>
+                                                    </div>
+                                                </li>
+                                                <li *ngFor="let service of services; let i = index">
+                                                   <!--  <a href="javascript:void(0)" (click)="navigateToService(service.id)">
+                                                        {{ service.name }}
+                                                    </a> -->
+                                                    <a
+    [routerLink]="['/servicesDetail']"
+    [queryParams]="{ id: service.id }"
+    [href]="'/servicesDetail?id=' + service.id">
+    {{ service.name }}
+  </a>
+                                                </li>
+
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a routerLink="/gallery" href="/gallery">Portfolio</a>
+
+                                        </li>
+                                        <li>
+                                            <a routerLink="/faqs" href="/faqs">FAQs</a>
+                                        </li>
+                                        <li>
+                                            <a routerLink="/contact" href="/contact">Contact</a>
+                                        </li>
+                                         
+
+                                    </ul>     
+
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-right d-flex justify-content-end align-items-center">
+                        <a class="search-trigger search-icon">
+                            <button class="fab">
+                                <i class="fal fa-envelope"></i>
+                                <h4 class="phone-number">admin&#64;casainstall.com</h4>
+                            </button>
+                        </a>
+
+                        <a class="search-trigger search-icon">
+                            <button class="fab" (click)="toggleMenu($event)">
+                                <i class="fal fa-phone-alt"></i>
+                                <h4 class="phone-number">919 885-5401</h4>
+                            </button>
+                            <div class="fab-menu" [class.show]="menuOpen">
+                                <button (click)="sendSMS()">Send SMS</button>
+                                <button (click)="makeCall()">Make Call</button>
+                            </div>
+                        </a>
+
+                        <a class="search-trigger search-icon">
+                            <button class="fab admin-btn" (click)="openLoginModal(); $event.stopPropagation()">
+                                <i class="fas fa-user"></i>
+                                <h4 class="phone-number">Admin</h4>
+                            </button>
+                        </a>
+
+                        <div class="header__hamburger d-xl-block my-auto">
+                            <div class="sidebar__toggle">
+                                <img src="assets/img/bar.png" alt="img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Login Modal -->
+<div class="login-modal" *ngIf="showLoginModal" (click)="closeLoginModal()">
+    <div class="login-modal-content" (click)="$event.stopPropagation()">
+        <div class="login-modal-header">
+            <h3>Admin Login</h3>
+            <button type="button" class="close-btn" (click)="closeLoginModal()">&times;</button>
+        </div>
+        <div class="login-modal-body">
+            <form (ngSubmit)="login()" #loginForm="ngForm">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" [(ngModel)]="loginUsername" required
+                        class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" [(ngModel)]="loginPassword" required
+                        class="form-control">
+                </div>
+                <div class="error-message" *ngIf="loginError">{{ loginError }}</div>
+                <div class="login-modal-footer">
+                    <button type="button" class="btn btn-secondary" (click)="closeLoginModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

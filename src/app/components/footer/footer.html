@@ -1,0 +1,132 @@
+<footer class="footer-section footer-bg">
+    <div class="container">
+        <div class="footer-widgets-wrapper">
+            <div class="row">
+                <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay=".3s">
+                    <div class="single-footer-widget">
+                        <div class="widget-head">
+                            <a (click)="router.navigate(['/home'])">
+                                <img src="assets/img/logo/footer-logo.png" alt="logo-img">
+                            </a>
+                        </div>
+                        <div class="footer-content">
+                            <p>
+                                We’re excited to collaborate and bring your vision to life. Your satisfaction is our priority!                            </p>
+                           
+                            <div class="social-icon d-flex align-items-center">
+                                <a href="https://www.instagram.com/casaimproveme/"><i class="fab fa-instagram"></i></a>
+                                <a href="https://web.facebook.com/casaimproveme?_rdc=1&_rdr"><i class="fab fa-facebook-f"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay=".5s">
+                    <div class="single-footer-widget ml-100">
+                        <div class="widget-head">
+                            <h3>Quick links</h3>
+                        </div>
+                        <ul class="list-items">
+                            <li>
+                                <a (click)="router.navigate(['/about'])"> 
+                                    About Us
+                                </a>
+                            </li>
+                            <li>
+                                <a (click)="router.navigate(['/services1'])">
+                                    Service
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a (click)="router.navigate(['/gallery'])">
+                                    Portfolio
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 ps-md-5 col-md-6 wow fadeInUp" data-wow-delay=".7s">
+                    <div class="single-footer-widget">
+                        <div class="widget-head">
+                            <h3>Service</h3>
+                        </div>
+                        <ul class="list-items">
+                            
+                            <li *ngFor="let service of services; let i = index">
+                                <a (click)="navigateToService(service.id)">
+                                    {{ service.name }}
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".9s">
+                    <div class="single-footer-widget">
+                        <div class="widget-head">
+                            <h3>Contact</h3>
+                        </div>
+                        <div class="footer-content">
+                            <div class="contact-info-area">
+                                <div class="contact-items">
+                                    <div class="icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="content">
+                                        <p>Address</p>
+                                        <h4> Raleigh, North Carolina (NC)</h4>
+                                    </div>
+                                </div>
+                                <div class="contact-items">
+                                    <div class="icon">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div class="content">
+                                        <p>Phone</p>
+                                        <h4><a href="tel:9198855401">919 885-5401</a></h4>
+                                    </div>
+                                </div>
+                                <div class="contact-items">
+                                    <div class="icon">
+                                        <i class="fal fa-envelope"></i>
+                                    </div>
+                                    <div class="content">
+                                        <p>Email</p>
+                                        <h4> <a style="font-size: 17px; text-transform: none;" href="mailto:admin&#64;casainstall.com" class="link">admin&#64;casainstall.com</a></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="footer-wrapper d-flex align-items-center justify-content-between">
+                <p class="wow fadeInLeft color-2" data-wow-delay=".3s">
+                    © casawallpapper  2026 | All Rights Reserved
+                </p>
+                <ul class="footer-menu wow fadeInRight" data-wow-delay=".5s">
+                    <li>
+                        <a (click)="router.navigate(['/terms'])">
+                            Terms & Condition
+                        </a>
+                    </li>
+                    <li>
+                        <a (click)="router.navigate(['/policy'])">
+                            Privacy Policy
+                        </a>
+                    </li>
+                    <li>
+                        <a (click)="router.navigate(['/contact'])">
+                            Contact Us
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>

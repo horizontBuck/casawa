@@ -1,0 +1,76 @@
+<div class="breadcrumb-wrapper section-padding bg-cover" style="background-image: url('assets/img/contact.jpg');">
+    <div class="container">
+        <div class="page-heading">
+            <h1 class="wow fadeInUp" data-wow-delay=".3s">Projects</h1>
+            <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".5s">
+                <li>
+                    <a>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <i class="fas fa-chevron-right"></i>
+                </li>
+                <li>
+                    Gallery
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Portfolio Section Start -->
+<section class="portfolio-section fix section-padding">
+    <div class="portfolio-wrapper style-2">
+        <!-- Etiquetas de Filtro -->
+        <div class="filter-buttons">
+            <button class="filter-btn" (click)="filterPortfolios('all')">Todos</button>
+            <button class="filter-btn" (click)="filterPortfolios('residencial')">Residencial</button>
+            <button class="filter-btn" (click)="filterPortfolios('comercial')">Comercial</button>
+        </div>
+
+        <div class="row g-4 portfolio-items-wrapper">
+            <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6" *ngFor="let portfolio of filteredPortfolios">
+                <div class="portfolio-items" (click)="viewImage(portfolio)">
+                    <div class="portfolio-image">
+                        <img [src]="getImageUrl(portfolio)" alt="{{ portfolio.name }}" class="img-fluid">
+                        <div class="portfolio-content">
+                            <span>{{ portfolio.name }}</span>
+                            <h3>
+                                <span class="tag-badge" [ngClass]="portfolio.tag === 'residencial' ? 'residential-tag' : 'commercial-tag'">
+                                    {{ portfolio.tag }}
+                                </span>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cta Section Start -->
+<section class="cta-banner-section-2">
+    <div class="container">
+        <div class="cta-banner-wrapper-2">
+            <div class="cta-image wow fadeInUp" data-wow-delay=".3s">
+                <img src="assets/img/cta-img.png" alt="cta-img">
+                <div class="circle-shape">
+                    <img src="assets/img/circle-border.png" alt="shape-img">
+                </div>
+            </div>
+            <div class="section-title-area">
+                <div class="section-title mb-0">
+                    <h2 class="text-white wow fadeInUp" data-wow-delay=".5s">
+                        Crafting spaces that <br> the reflect style
+                    </h2>
+                </div>
+                <a (click)="router.navigate(['/contact'])" class="theme-btn bg-white padding-style wow fadeInUp"
+                    data-wow-delay=".7s">
+                    Get In Touch
+                    <i class="fas fa-long-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

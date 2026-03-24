@@ -1,0 +1,168 @@
+<section class="contact-Info-section section-padding pb-80 fix">
+    <div class="container">
+        <div class="contact-info-wrapper">
+            <div class="row g-0">
+                <div class="col-xl-5 col-lg-5">
+                    <div class="google-map">
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6900977.056633521!2d-85.09378108157651!3d32.37579960522202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x26e411b9d1852107%3A0x40cd112f46b6edab!2sCasa%20Wallpaper%20-%20Wallpaper%20Installation!5e0!3m2!1sen!2sco!4v1773137096206!5m2!1sen!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-7">
+                    <div class="contact-info-content">
+                        <h2 class="wow fadeInUp" data-wow-delay=".3s">Contact Info</h2>
+                        <p class="wow fadeInUp" data-wow-delay=".5s">Find us on the map </p>
+                        <div class="contact-info-area">
+                            <div class="row g-4">
+                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".2s">
+                                    <div class="contact-info-items">
+                                        <div class="icon">
+                                            <i class="fas fa-phone-alt"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h3>Phone</h3>
+                                            <h6><a href="tel:9198855401">(919) 885-5401</a></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".4s">
+                                    <div class="contact-info-items">
+                                        <div class="icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h3>Email</h3>
+                                            <h6><a href="mailto:admin&#64;casainstall.com"
+                                                    class="link">admin&#64;casainstall.com</a></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".6s">
+                                    <div class="contact-info-items">
+                                        <div class="icon">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h3>Location</h3>
+                                            <h6>Garner, North Carolina (NC)</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".8s">
+                                    <div class="contact-info-items">
+                                        <div class="icon">
+                                            <i class="fas fa-link"><a href="https://www.casawallpaper.com"></a></i>
+                                        </div>
+                                        <div class="content">
+                                            <h3>Website</h3>
+                                            <h6>www.casawallpaper.com</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section Start -->
+<section class="contact-section-4 fix section-padding pt-80">
+    <div class="container">
+        <div class="contact-wrapper-3">
+            <div class="row">
+                <div class="col-lg-7" style="background: #000;">
+                    <div class="contact-content">
+                        <div class="section-title">
+                            <span class="wow fadeInUp">Contact Us</span>
+                            <h2 class="wow fadeInUp" data-wow-delay=".3s">Get In Touch</h2>
+                        </div>
+                        <form (ngSubmit)="sendContact()" #contactForm="ngForm" class="contact-form-items">
+                            <div class="row g-4">
+                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
+                                    <div class="form-clt">
+                                        <input type="text" name="name" id="name" placeholder="Your Name" [(ngModel)]="form.name" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
+                                    <div class="form-clt">
+                                        <input type="text" name="email" id="email" placeholder="Your Email" [(ngModel)]="form.email" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
+                                    <div class="form-clt">
+                                        <input type="number" name="phone" id="phone" placeholder="Phone Number" [(ngModel)]="form.phone" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
+                                    <div class="form-clt">
+                                        <input type="number" name="zipcode" id="zipcode" placeholder="Zip Code" [(ngModel)]="form.zipcode" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
+                                    <div class="form-clt">
+                                        <div class="nice-select" tabindex="0">
+                                            <span class="current">Select Services</span>
+                                            <ul class="list">
+                                                <li data-value="1" class="option selected focus">Interior Painting</li>
+                                                <li data-value="2" class="option">Wallpaper installation or repair</li>
+                                                <li data-value="3" class="option">Wallpaper removal</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
+                                    <div class="form-clt">
+                                        <div class="nice-select" tabindex="0">
+                                            <span class="current">Type of project</span>
+                                            <ul class="list">
+                                                <li data-value="1" class="option selected focus">Installation</li>
+                                                <li data-value="2" class="option">Repair</li>
+                                                <li data-value="3" class="option">Installation and repair</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 wow fadeInUp" data-wow-delay=".7s">
+                                    <div class="form-clt">
+                                        <textarea name="message" id="message" placeholder="Message here.." [(ngModel)]="form.message"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 wow fadeInUp" data-wow-delay=".8s">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="termsCheck1" >
+                                        <label class="form-check-label text-white" for="termsCheck1"
+                                            (click)="router.navigate(['/terms'])" style="text-align: justify;">
+                                            I consent to receive marketing text messages from Casa Wallpaper at the phone number provided. Frequency may vary. Message & data rates may apply. Text HELP for assistance, reply STOP to opt out.
+
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12 wow fadeInUp" data-wow-delay=".8s">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="termsCheck2" >
+                                        <label class="form-check-label text-white" for="termsCheck2"
+                                            (click)="router.navigate(['/terms'])" style="text-align: justify;">
+                                            I consent to receive non-marketing text messages from Casa Wallpaper about my order updates, appointment reminders etc. Frequency may vary. Message & data rates may apply. Text HELP for assistance, reply STOP to opt out
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-7 wow fadeInUp" data-wow-delay=".9s">
+                                    <button type="submit" class="theme-btn padding-style">
+                                        Book Now <i class="fas fa-long-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <div style="text-align: center; color: rgb(218 116 63) !important;"> <a
+                                (click)="router.navigate(['/terms'])">Terms and Conditions</a> | <a
+                                (click)="router.navigate(['/policy'])">Privacy Policy</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

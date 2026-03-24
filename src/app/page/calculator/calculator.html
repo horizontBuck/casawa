@@ -1,0 +1,146 @@
+<ng-template #calculatorModal let-modal>
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content calculator-modal">
+      <div class="modal-header">
+        <h4 class="modal-title">Wallpaper Calculator</h4>
+        <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="$event.preventDefault()">
+
+          <div class="row g-4">
+
+            <!-- Tipo de espacio -->
+            <div class="col-lg-6">
+              <div class="form-clt">
+                <label>Type of Space</label>
+                <select class="form-control" formControlName="spaceType">
+                  <option value="">Select</option>
+                  <option value="bathroom">Bathroom</option>
+                  <option value="bedroom">Bedroom</option>
+                  <option value="livingroom">Living Room</option>
+                  <option value="kitchen">Kitchen</option>
+                  <option value="laundryroom">Laundry Room</option>
+                  <option value="office">Office</option>
+                  <option value="pantry">Pantry</option>
+                  <option value="playroom">Playroom</option>
+                  <option value="basement">Basement</option>
+                  <option value="custom">Custom</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Unit Selector -->
+            <div class="col-12 mb-3">
+              <div class="form-group">
+                <label>Measurement Units</label>
+                <select class="form-select" style="max-width: 200px;" formControlName="measurementUnit">
+                  <option value="ft">Feet (ft)</option>
+                  <option value="in">Inches (in)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- WALLS -->
+            <div class="col-12">
+              <h5>Walls</h5>
+            </div>
+
+            <div formArrayName="walls" class="col-12">
+              <div *ngFor="let wall of getWallControls(); let i = index"
+                   [formGroup]="wall"
+                   class="row g-3 wall-box mb-3">
+
+                <div class="col-md-5">
+                  <label>Width ({{ form.get('measurementUnit')?.value }})</label>
+                  <input type="number"
+                         class="form-control"
+                         [placeholder]="'Width (' + (form.get('measurementUnit')?.value === 'ft' ? 'ft' : 'in') + ')'"
+                         formControlName="width"
+                         step="0.01">
+                </div>
+
+                <div class="col-md-5">
+                  <label>Height ({{ form.get('measurementUnit')?.value }})</label>
+                  <input type="number"
+                         class="form-control"
+                         [placeholder]="'Height (' + (form.get('measurementUnit')?.value === 'ft' ? 'ft' : 'in') + ')'"
+                         formControlName="height"
+                         step="0.01">
+                </div>
+
+                <div class="col-md-2 d-flex align-items-end">
+                  <button type="button"
+                          class="btn btn-danger btn-sm w-100"
+                          (click)="removeWall(i)">
+                    Remove
+                  </button>
+                </div>
+              </div>
+
+              <button type="button"
+                      class="btn theme-btn mt-3"
+                      (click)="addWall()">
+                <i class="fas fa-plus"></i> <span>Add Wall</span>
+              </button>
+            </div>
+
+            <!-- DIMENSIONES DEL ROLLO -->
+            <div class="col-12 mt-4">
+              <h5>Wallpaper Specifications</h5>
+            </div>
+
+            <div class="col-md-4">
+              <label>Roll Width (inches)</label>
+              <input type="number"
+                     class="form-control"
+                     placeholder="Roll Width (inches)"
+                     formControlName="rollWidth">
+            </div>
+
+            <div class="col-md-4">
+              <label>Roll Length (ft)</label>
+              <input type="number"
+                     class="form-control"
+                     placeholder="Roll Length (ft)"
+                     formControlName="rollLength">
+            </div>
+
+            <div class="col-md-4">
+              <label>Pattern Repeat (inches)</label>
+              <input type="number"
+                     class="form-control"
+                     placeholder="Pattern Repeat (inches)"
+                     formControlName="patternRepeat">
+            </div>
+
+            <!-- BOTÓN -->
+            <div class="col-12 text-center mt-4 d-flex justify-content-center gap-3">
+              <button type="button"
+                      class="theme-btn padding-style"
+                      (click)="calculate()">
+                Calculate
+              </button>
+              <a href="https://wa.me/19198855401?text=Hello,%20I%20need%20help%20with%20the%20wallpaper%20calculation"
+                 target="_blank"
+                 class="btn whatsapp-btn">
+                <i class="fab fa-whatsapp me-2"></i> Contact for Help
+              </a>
+            </div>
+
+            <!-- RESULTADO -->
+            <div class="col-12 text-center mt-4" *ngIf="rollsNeeded !== null">
+              <div class="result-box">
+                <h3>You need {{ rollsNeeded }} roll(s)</h3>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</ng-template>

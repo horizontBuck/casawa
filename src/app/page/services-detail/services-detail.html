@@ -1,0 +1,76 @@
+<!-- Service Details Section Start -->
+<section class="service-details-section fix section-padding">
+    <div class="container">
+        <div class="project-details-wrapper">
+            <div class="row g-4">
+                <div class="col-12 col-lg-4 order-1 order-md-1">
+                    <div class="main-sidebar">
+                        <div class="single-sidebar-widget">
+                            <div class="project-catagory">
+                                <h3 *ngIf="service">
+                                    {{service.name}}</h3>
+                                <p *ngIf="service" style="text-align: left;">{{service.description}}</p>
+                              
+                                <ul>
+                                    <li *ngFor="let lidescription of service.lidescription">
+                                        {{lidescription}}
+                                    </li>                                   
+                                </ul> 
+                                <div class="header-button">
+                                    <a (click)="router.navigate(['/contact'])" class="theme-btn bg-red-2">Request
+                                        service<i class="fas fa-long-arrow-right"></i></a>
+                                </div>
+                                <div class="social-icon d-flex align-items-center">
+                                    <a href="https://www.instagram.com/casaimproveme/" target="_blank"><i
+                                            class="fab fa-facebook-f"></i></a>
+                                    <a href="https://www.instagram.com/casaimproveme/" target="_blank"><i
+                                            class="fab fa-instagram"></i></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-8 order-2 order-md-2">
+                    <div class="project-details-items">
+                        <div class="project-image">
+                            <img src="assets/img/project/details-1.jpg" alt="img">
+                        </div>
+                        <div class="project-details-content">
+                            <p>{{service.preitems}}</p>
+                            <h2>Our services include the following covered areas:</h2>
+                            <ul class="d-list">
+                               <li *ngFor="let item of service.items">
+                                    <i class="far fa-chevron-double-right"></i>
+                                {{item}}</li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cta Section Start -->
+<section class="portfolio-section fix " style="padding: 50px 0;">
+    <div class="portfolio-wrapper style-2">
+        
+        <div class="row g-4">
+            <h2 style="text-align: center;">Service Images</h2>
+        </div>
+        <div *ngIf="service?.images && service.images.length > 0; else noImages" class="row g-4">
+            <div *ngFor="let image of service.images" class="col-xxl-3 col-xl-4 col-lg-4 col-md-6">
+                <div class="portfolio-items">
+                    <img [src]="getImageUrl(image)" alt="Service image" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+        <ng-template #noImages>
+            <p style="text-align: center;">No images available for this service.</p>
+        </ng-template>
+        </div>
+</section>
